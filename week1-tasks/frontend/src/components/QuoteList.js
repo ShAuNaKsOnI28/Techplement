@@ -1,20 +1,23 @@
 import axios from "axios";
 import React, { useState } from "react";
-import SearchBar from "./SearchBar";
 import "./QuoteList.css";
+import SearchBar from "./SearchBar";
 
 const QuoteList = () => {
-  const [quote, setQuote] = useState({ text: "", author: "" });
+  const [quotes, setQuotes] = useState([]);
+
   const searchQuotes = (author) => {
     axios
-      .get(`http://localhost:5000/api/quote?author=${author}`)
-      .then((response) => setQuote(response.data));
+      .get(`http://localhost:5000/api/quotes?author=${author}`)
+      .then((response) => setQuotes(response.data))
+      .catch((error) => console.error("Error fetching quotes:", error));
   };
+
   return (
     <div className="quote-list">
       <SearchBar onSearch={searchQuotes} />
       <ul>
-        {quote.map((quote) => (
+        {quotes.map((quote) => (
           <li key={quote._id} className="quote-item">
             "{quote.text}" - {quote.author}
           </li>
