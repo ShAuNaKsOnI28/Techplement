@@ -1,0 +1,28 @@
+.quote-display {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  .quote-text {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .quote-author {
+    font-size: 1.2em;
+    margin: 0;
+    text-align: right;
+    color: #555;
+  }
+  
+  @media (max-width: 600px) {
+    .quote-text {
+      font-size: 1.2em;
+    }
+  
+    .quote-author {
+      font-size: 1em;
+    }
+  }
